@@ -32,8 +32,8 @@ import com.example.pokemonapp.util.NetworkConnectivityObserver
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
-    override fun main() {
-        super.onCreate(null) // Mock onCreate, usually super.onCreate(savedInstanceState) 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         val app = application as PokemonApplication
         val connectivityObserver = NetworkConnectivityObserver(applicationContext)
@@ -127,11 +127,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-    
-    // Proper onCreate override for code file correctness
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        main()
     }
 }
