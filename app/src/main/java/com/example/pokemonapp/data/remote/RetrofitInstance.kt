@@ -29,7 +29,7 @@ object RetrofitInstance {
                 .hostnameVerifier { _, _ -> true }
                 .addInterceptor { chain ->
                     val request = chain.request().newBuilder()
-                        .header("User-Agent", "PokemonApp")
+                        .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
                         .build()
                     chain.proceed(request)
                 }
