@@ -27,6 +27,12 @@ object RetrofitInstance {
             okhttp3.OkHttpClient.Builder()
                 .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as javax.net.ssl.X509TrustManager)
                 .hostnameVerifier { _, _ -> true }
+                .addInterceptor { chain ->
+                    val request = chain.request().newBuilder()
+                        .header("User-Agent", "PokemonApp")
+                        .build()
+                    chain.proceed(request)
+                }
                 .build()
         } catch (e: Exception) {
             throw RuntimeException(e)
